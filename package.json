@@ -1,0 +1,39 @@
+{
+  "name": "cypress-x-cucumber",
+  "version": "1.0.0",
+  "description": "boilerplate automation testing on webui using cypress and cucumber",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^4.2.0",
+    "cypress-cucumber-preprocessor": "^2.0.1",
+    "dotenv": "^8.2.0",
+    "multiple-cucumber-html-reporter": "^1.16.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/reports/results",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  },
+  "scripts": {
+    "clean-reports": "rm -rf cypress/reports/results/*.json cypress/reports/features cypress/reports/index.html cypress/reports/* cypress/screenshots/* cypress/videos/*",
+    "test-webui": "npm run clean-reports & ./node_modules/.bin/cypress-tags run --spec \"cypress/integration/*.feature\" --record --key 1234567890",
+    "cypress": "npm run clean-reports & ./node_modules/.bin/cypress-tags run --spec \"cypress/integration/*.feature\"",
+    "cypress-ui": "./node_modules/.bin/cypress open",
+    "reports": "node cypress/cypress_report.js",
+    "open-reports": "open 'cypress/reports/index.html'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damarmustiko/cypressxcucumber.git"
+  },
+  "author": "damar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damarmustiko/cypressxcucumber/issues"
+  },
+  "homepage": "https://github.com/damarmustiko/cypressxcucumber#readme"
+}
